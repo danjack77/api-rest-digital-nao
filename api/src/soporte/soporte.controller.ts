@@ -3,7 +3,10 @@ import { SoporteService } from './soporte.service';
 import { Ticket } from './entities/ticket.entity';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/udpate-ticket.dto';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiTags('soporte')
 @Controller('soporte')
 export class SoporteController {
 

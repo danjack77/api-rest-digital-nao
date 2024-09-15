@@ -1,12 +1,17 @@
-import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, BadRequestException, InternalServerErrorException } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, BadRequestException, InternalServerErrorException, UseGuards } from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
 import { Usuario } from './entities/usuario.entity';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
+@ApiBearerAuth()
+@ApiTags('users')
 @Controller('usuarios')
 export class UsuarioController {
     
     constructor(private readonly usuarioService: UsuarioService) {}
 
+    @UseGuards(JwtAuthGuard)
     @Get()
     async findAll(): Promise<{ mensaje: string; datos?: Usuario[] }> {
         try {
@@ -21,6 +26,19 @@ export class UsuarioController {
     async findOne(@Param('id') id: string): Promise<{ mensaje: string; datos?: Usuario }> {
         try {
         const usuario = await this.usuarioService.findOne(+id);
+        if (!usuario) {
+            throw new NotFoundException('Usuario no encontrado');
+        }
+        return { mensaje: 'Usuario obtenido exitosamente', datos: usuario };
+        } catch (error) {
+            throw error;
+        }
+    }
+
+    @Get(':correo')
+    async findOneCorreo(@Param('correo') correo: string): Promise<{ mensaje: string; datos?: Usuario }> {
+        try {
+        const usuario = await this.usuarioService.findOne(+correo);
         if (!usuario) {
             throw new NotFoundException('Usuario no encontrado');
         }

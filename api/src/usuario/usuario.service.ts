@@ -24,6 +24,14 @@ export class UsuarioService {
         return usuario;
     }
 
+    async findOneCorreo(correo: string): Promise<Usuario> {
+        const usuario = await this.usuarioRepository.findOneBy({ correo });
+        if (!usuario) {
+            throw new NotFoundException('Usuario no encontrado');
+        }
+        return usuario;
+    }
+
     async create(createUsuarioDto: CreateUsuarioDto): Promise<Usuario> {
         try {
             const usuario = this.usuarioRepository.create(createUsuarioDto);

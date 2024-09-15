@@ -4,7 +4,8 @@ import { Ticket } from 'src/soporte/entities/ticket.entity';
 
 @Entity('usuarios')
 export class Usuario{
-    @PrimaryGeneratedColumn()
+
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column()

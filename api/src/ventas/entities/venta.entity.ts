@@ -15,6 +15,8 @@ export class Venta{
     @Column()
     fecha: Date;
   
+    /*
     @ManyToOne(() => Usuario, usuario => usuario.ventas)
     usuario: Usuario;
+    */
 }

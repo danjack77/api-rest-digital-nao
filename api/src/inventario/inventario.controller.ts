@@ -1,7 +1,10 @@
 import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, BadRequestException, InternalServerErrorException } from '@nestjs/common';
 import { InventarioService } from './inventario.service';
 import { Inventario } from './entities/inventario.entity';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiTags('Inventario')
 @Controller('inventario')
 export class InventarioController {
 

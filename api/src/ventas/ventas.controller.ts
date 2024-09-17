@@ -1,7 +1,10 @@
 import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, BadRequestException, InternalServerErrorException } from '@nestjs/common';
 import { VentasService } from './ventas.service';
 import { Venta } from './entities/venta.entity';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiBearerAuth()
+@ApiTags('Ventas')
 @Controller('ventas')
 export class VentasController {
     constructor(private readonly ventasService: VentasService) {}

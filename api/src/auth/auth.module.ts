@@ -5,6 +5,7 @@ import { AuthController } from './auth.controller';
 import { Usuario } from 'src/usuario/entities/usuario.entity';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstanst } from './jwt.constants';
+import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Usuario]),
@@ -12,7 +13,7 @@ import { jwtConstanst } from './jwt.constants';
       secret : jwtConstanst.secret
   })
 ],
-  providers: [AuthService],
+  providers: [AuthService, JwtStrategy],
   controllers: [AuthController]
 })
 export class AuthModule {}

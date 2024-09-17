@@ -6,7 +6,7 @@ import { UpdateTicketDto } from './dto/udpate-ticket.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiBearerAuth()
-@ApiTags('soporte')
+@ApiTags('Soporte')
 @Controller('soporte')
 export class SoporteController {
 

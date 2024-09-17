@@ -21,8 +21,10 @@ export class Ticket {
     @Column()
     fecha: Date;
   
+    /*
     @ManyToOne(() => Usuario, usuario => usuario.tickets)
     usuario: Usuario;
+    */
 
 
 }

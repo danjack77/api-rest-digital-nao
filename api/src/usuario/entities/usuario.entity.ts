@@ -20,10 +20,11 @@ export class Usuario{
   @Column()
   rol: string; 
 
+  /*
   @OneToMany(() => Venta, venta => venta.usuario)
   ventas: Venta[];
 
   @OneToMany(() => Ticket, ticket => ticket.usuario)
-  tickets: Ticket[];
+  tickets: Ticket[];*/
 
 }

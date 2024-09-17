@@ -4,7 +4,7 @@ import { Inventario } from './entities/inventario.entity';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiBearerAuth()
-@ApiTags('inventario')
+@ApiTags('Inventario')
 @Controller('inventario')
 export class InventarioController {
 

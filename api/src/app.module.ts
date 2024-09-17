@@ -20,7 +20,7 @@ import { AuthModule } from './auth/auth.module';
       port: 3306,
       username: 'root',
       password: '',
-      database: 'comercioDigital',
+      database: 'comerciodigital',
       entities: [Venta, Inventario, Ticket, Usuario],
       synchronize: false,
     }),
